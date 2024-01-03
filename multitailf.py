@@ -15,8 +15,6 @@ class tt:
         #
         size = s.master.getmaxyx()
         s.size=size
-        if len(s.winname) == 0 :
-            return
         i=-1
         wHeight = int((size[0]-1)/winVnum)
         for h in range(winVnum):
@@ -122,11 +120,17 @@ while 1 :
         a = next(i)
     except StopIteration:
         break
-    dirpathes.append(a)
+    if a[0] == '-' :
+        pass
+    else :
+        dirpathes.append(a)
 
 r=1
 while r:
     log = logstailf(dirpathes)
+    if len(log.names) == 0 :
+        print("No files.")
+        break
     r = curses.wrapper(main, log)
     if r is Exception :
         raise(r)
