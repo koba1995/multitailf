@@ -25,9 +25,9 @@ class tt:
                 i=i+1
                 if i >= len(s.winname) :
                     break
-                wb = s.master.derwin(wHeight,wWidth,wHeight*h,wWidth*v)
+                wb = s.master.derwin(wHeight+1,wWidth,wHeight*h,wWidth*v)
                 wb.box()
-                w = wb.derwin(wHeight-2,wWidth-2,1,1)
+                w = wb.derwin(wHeight-1,wWidth-2,1,1)
                 s.wins.append(w)
                 wb.move(0,1)
                 wb.addstr(s.winname[i])
